@@ -1,0 +1,12 @@
+name = "nowall-redirect"
+main = "src/index.js"
+compatibility_date = "2023-05-18"
+
+# Development environment
+[env.dev]
+workers_dev = true
+
+# Production environment
+[env.production]
+workers_dev = true
+# We'll add custom domain later

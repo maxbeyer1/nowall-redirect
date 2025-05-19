@@ -1,0 +1,17 @@
+{
+  "name": "nowall-redirect",
+  "version": "1.0.0",
+  "description": "Redirects URLs to archive.today",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx wrangler dev"
+  },
+  "author": "Max Beyer",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.27.0",
+    "eslint": "^9.27.0",
+    "globals": "^16.1.0",
+    "prettier": "^3.5.3"
+  }
+}
