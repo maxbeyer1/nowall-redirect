@@ -30,13 +30,23 @@ export default {
       }
 
       // Validate the URL
-      new URL(targetUrl);
+      new URL(targetUrl); // Throws if invalid
 
       // Construct the archive.today URL
       const archiveUrl = `https://archive.today/submit/?url=${encodeURIComponent(targetUrl)}`;
 
       // Redirect to archive.today
-      return Response.redirect(archiveUrl, 302);
+      // Optimized redirect response with preconnect
+      return new Response(null, {
+        status: 307, // Temporary redirect that preserves method
+        headers: {
+          Location: archiveUrl,
+          Link: '<https://archive.today>; rel=preconnect', // Early connection to destination
+          'Cache-Control': 'public, max-age=60', // Cache redirects briefly
+          'X-Content-Type-Options': 'nosniff',
+          'Alt-Svc': 'h3=":443"; ma=86400', // Advertise HTTP/3 support if available
+        },
+      });
     } catch (error) {
       return new Response(errorPageHTML, {
         headers: { 'content-type': 'text/html;charset=UTF-8' },
