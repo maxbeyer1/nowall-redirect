@@ -3,6 +3,16 @@ export default {
     const url = new URL(request.url);
     const { pathname } = url;
 
+    // Serve favicon directly
+    if (
+      pathname === '/favicon.ico' ||
+      pathname === '/apple-touch-icon.png' ||
+      pathname === '/favicon-32x32.png' ||
+      pathname === '/favicon-16x16.png'
+    ) {
+      return env.ASSETS.fetch(request);
+    }
+
     // Landing page for root path
     if (pathname === '/' || pathname === '') {
       return new Response(landingPageHTML, {
@@ -62,7 +72,11 @@ const landingPageHTML = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NoWall.cc - Bypass Paywalls Instantly</title>
+  <title>NoWall.cc - Bypass Paywalls with Archives</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -564,6 +578,10 @@ const errorPageHTML = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NoWall.cc - Error</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <style>
     :root {
       --error-color: #e63946;
