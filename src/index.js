@@ -66,7 +66,6 @@ export default {
 };
 
 // Landing page HTML
-// Landing page HTML - removed example, kept only input with decorations
 const landingPageHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -153,6 +152,13 @@ const landingPageHTML = `<!DOCTYPE html>
       z-index: -1;
       transform: rotate(-2deg);
     }
+
+    @media (max-width: 640px) {
+      h1::after {
+        height: 0.35rem;
+        bottom: 0.3rem;
+      }
+    }
     
     .badge {
       display: inline-block;
@@ -236,6 +242,13 @@ const landingPageHTML = `<!DOCTYPE html>
       font-size: 1.25rem;
       margin-bottom: 0.5rem;
     }
+
+    @media (max-width: 640px) {
+      .form-header {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+      }
+    }
     
     .input-group {
       display: flex;
@@ -248,6 +261,21 @@ const landingPageHTML = `<!DOCTYPE html>
       .input-group {
         flex-direction: row;
         align-items: stretch;
+      }
+    }
+    
+    /* URL field wrapper to keep prefix and input together */
+    .url-field-wrapper {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+    }
+    
+    /* Desktop styles remain unchanged */
+    @media (min-width: 640px) {
+      .url-field-wrapper {
+        flex: 1;
+        gap: 0.5rem;
       }
     }
     
@@ -480,14 +508,16 @@ const landingPageHTML = `<!DOCTYPE html>
       <div class="url-input-form">
         <div class="form-header">Enter a URL to bypass paywall</div>
         <div class="input-group">
-          <div class="prefix">https://</div>
-          <input 
-            type="text" 
-            id="url-input" 
-            class="url-input" 
-            placeholder="example.com/article-with-paywall" 
-            aria-label="URL to bypass"
-          >
+          <div class="url-field-wrapper">
+            <div class="prefix">https://</div>
+            <input 
+              type="text" 
+              id="url-input" 
+              class="url-input" 
+              placeholder="example.com/article-with-paywall" 
+              aria-label="URL to bypass"
+            >
+          </div>
           <button id="submit-url" class="submit-button">Go</button>
         </div>
       </div>
