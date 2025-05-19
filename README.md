@@ -1,6 +1,8 @@
 # NoWall Redirect
 
-A simple link redirection tool that makes it easier to bypass article paywalls through archive.today.
+A simple link redirection tool that makes it easier to bypass article paywalls through [archive.today]([url](https://archive.today/)).
+
+![nowall-readme-banner](https://github.com/user-attachments/assets/b6e9ecd9-39fd-4c78-9e9b-d493967e27c9)
 
 ## What it does
 
