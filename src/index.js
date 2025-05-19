@@ -46,6 +46,7 @@ export default {
 };
 
 // Landing page HTML
+// Landing page HTML - removed example, kept only input with decorations
 const landingPageHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,7 +127,7 @@ const landingPageHTML = `<!DOCTYPE html>
     }
     
     .hero {
-      margin-bottom: 5rem;
+      margin-bottom: 3rem;
     }
     
     .hero-text {
@@ -141,32 +142,9 @@ const landingPageHTML = `<!DOCTYPE html>
       font-weight: 700;
     }
     
-    .example-container {
+    .url-input-container {
+      margin: 3rem 0 4rem;
       position: relative;
-      margin: 3rem 0;
-    }
-    
-    .example {
-      font-family: 'Space Mono', monospace;
-      background: var(--subtle-bg);
-      padding: 1.5rem;
-      border-radius: var(--radius);
-      font-size: 1.1rem;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid #111;
-      box-shadow: 8px 8px 0 rgba(17, 17, 17, 1);
-      transition: var(--transition);
-    }
-    
-    .example:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 10px 10px 0 rgba(17, 17, 17, 1);
-    }
-    
-    .example-url {
-      color: var(--accent-color);
-      font-weight: bold;
     }
     
     .decoration {
@@ -174,22 +152,119 @@ const landingPageHTML = `<!DOCTYPE html>
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      background: var(--rams-orange);
-      opacity: 0.1;
       z-index: -1;
+      opacity: 0.1;
     }
     
     .decoration-1 {
-      top: -20px;
+      top: -30px;
       right: -40px;
+      background: var(--rams-orange);
     }
     
     .decoration-2 {
-      bottom: -50px;
+      bottom: -40px;
       left: 20%;
       background: var(--accent-color);
       width: 80px;
       height: 80px;
+    }
+    
+    .url-input-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--subtle-bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 2px solid #111;
+      box-shadow: 8px 8px 0 rgba(17, 17, 17, 1);
+      transition: var(--transition);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .url-input-form:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 10px 10px 0 rgba(17, 17, 17, 1);
+    }
+    
+    .form-header {
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+    }
+    
+    @media (min-width: 640px) {
+      .input-group {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+    
+    .prefix {
+      font-family: 'Space Mono', monospace;
+      background: #e0e0e0;
+      padding: 0 1rem;
+      border-radius: var(--radius) 0 0 var(--radius);
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 2px solid #111;
+      border-right: none;
+    }
+    
+    .url-input {
+      font-family: 'Space Mono', monospace;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      border: 2px solid #111;
+      font-size: 1rem;
+      width: 100%;
+      background-color: white;
+      transition: var(--transition);
+    }
+    
+    .prefix + .url-input {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    .url-input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(64, 89, 255, 0.2);
+    }
+    
+    .submit-button {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--rams-orange);
+      color: white;
+      border: 2px solid #111;
+      border-radius: var(--radius);
+      padding: 0.75rem 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+    
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 0 rgba(17, 17, 17, 0.2);
+    }
+    
+    .submit-button:active {
+      transform: translateY(0);
+      box-shadow: none;
     }
     
     .how-to {
@@ -303,6 +378,19 @@ const landingPageHTML = `<!DOCTYPE html>
       font-weight: bold;
     }
     
+    .example {
+      font-family: 'Space Mono', monospace;
+      background: var(--subtle-bg);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #111;
+      box-shadow: 8px 8px 0 rgba(17, 17, 17, 1);
+      transition: var(--transition);
+    }
+    
     .bookmark-animation {
       display: inline-block;
       position: relative;
@@ -335,15 +423,27 @@ const landingPageHTML = `<!DOCTYPE html>
 <body>
   <div class="container">
     <div class="hero">
-      <h1>NoWall.cc <span class="badge">beta</span></h1>
+      <h1>NoWall.cc</h1>
       <p class="hero-text">A <strong>ridiculously simple</strong> tool that helps you bypass paywalls and read articles without limits.</p>
+    </div>
+    
+    <!-- URL input form with decorations -->
+    <div class="url-input-container">
+      <div class="decoration decoration-1"></div>
+      <div class="decoration decoration-2"></div>
       
-      <div class="example-container">
-        <div class="decoration decoration-1"></div>
-        <div class="decoration decoration-2"></div>
-        
-        <div class="example">
-          <span>nowall.cc/</span><span class="example-url">nytimes.com/2023/05/01/article-title</span>
+      <div class="url-input-form">
+        <div class="form-header">Enter a URL to bypass paywall</div>
+        <div class="input-group">
+          <div class="prefix">https://</div>
+          <input 
+            type="text" 
+            id="url-input" 
+            class="url-input" 
+            placeholder="example.com/article-with-paywall" 
+            aria-label="URL to bypass"
+          >
+          <button id="submit-url" class="submit-button">Go</button>
         </div>
       </div>
     </div>
@@ -352,8 +452,8 @@ const landingPageHTML = `<!DOCTYPE html>
       <h2>How it works</h2>
       <ol>
         <li>Find an article behind a paywall</li>
-        <li>Add <strong>nowall.cc/</strong> in front of the article's URL</li>
-        <li>We'll redirect you to archive.today which removes the paywall</li>
+        <li>Enter the article URL above (or add <strong>nowall.cc/</strong> in front of it)</li>
+        <li>We'll find archived versions without the paywall (or create a new one if none exist) and redirect you</li>
         <li>Enjoy reading without interruptions</li>
       </ol>
     </div>
@@ -378,9 +478,51 @@ const landingPageHTML = `<!DOCTYPE html>
   </div>
   
   <div class="footer">
-    NoWall.cc is a simple tool that helps you bypass paywalls.<br>
-    We don't store any data or track your browsing.
+    We don't store any data or track your browsing.<br>
+    Built by <a href="https://maxwbeyer.com/" target="_blank" style="color: var(--rams-orange);">Max Beyer</a>.
   </div>
+  
+  <script>
+    // URL redirect functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlInput = document.getElementById('url-input');
+      const submitButton = document.getElementById('submit-url');
+      
+      // Function to process and redirect
+      function processUrl() {
+        let url = urlInput.value.trim();
+        
+        if (!url) return;
+        
+        // Add https:// if not present
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = 'https://' + url;
+        }
+        
+        // Check if it's a valid URL
+        try {
+          new URL(url);
+          // Redirect to archive.today
+          window.location.href = 'https://archive.today/submit/?url=' + encodeURIComponent(url);
+        } catch (e) {
+          alert('Please enter a valid URL');
+        }
+      }
+      
+      // Event listener for button click
+      submitButton.addEventListener('click', processUrl);
+      
+      // Event listener for Enter key
+      urlInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          processUrl();
+        }
+      });
+      
+      // Auto-focus the input field when page loads
+      urlInput.focus();
+    });
+  </script>
 </body>
 </html>`;
 
