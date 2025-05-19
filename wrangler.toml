@@ -9,4 +9,6 @@ workers_dev = true
 # Production environment
 [env.production]
 workers_dev = true
-# We'll add custom domain later
+routes = [
+  { pattern = "nowall.cc/*", zone_name = "nowall.cc" }
+]
