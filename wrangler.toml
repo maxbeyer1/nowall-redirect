@@ -10,5 +10,8 @@ workers_dev = true
 [env.production]
 workers_dev = true
 routes = [
-  { pattern = "nowall.cc/*", zone_name = "nowall.cc" }
+  { pattern = "nowall.cc/*", zone_name = "nowall.cc", custom_domain = true },
+  { pattern = "nowall.cc", zone_name = "nowall.cc", custom_domain = true },
+  { pattern = "www.nowall.cc/*", zone_name = "nowall.cc", custom_domain = true },
+  { pattern = "www.nowall.cc", zone_name = "nowall.cc", custom_domain = true }
 ]
